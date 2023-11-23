@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Elifim</title>
+  
+  <style>
+  
+  body {
+    top: 0px;left: 0px;
+    font-size: 15pt;
+    background-color: #000000;
+    color: white;
+}
+
+::selection{
+ background-color: #1A354D;
+ color: #1A354D;
+}
+
+@font-face {
+  font-family: ff;
+  src: url("ff.ttf");
+}
+
+@font-face {
+  font-family: r;
+  src: url("r.otf");
+}
+
+#moon{
+top: 0px;left: 0px;position: absolute;
+ position: absolute;
+ z-index: 0;
+ 
+ width: 100%;
+ height: 100%;
+ 
+}
+
+
+#canvas {
+ top: 0px;left: 0px;position: absolute;
+ border-style: none;
+}
+
+#screen{
+ top: 0px;left: 0px;position: absolute;
+ background-color: black;
+ width: 100%;height: 100%;
+ z-index: 9;
+}
+
+#p0{
+ z-index: 10;
+ top: calc(50% - 10px);left: calc(50% - 100px);position: absolute;
+ text-align: center;
+ font-size: 35px;
+}
+
+#p1{
+}
+
+#p4{
+ display: none;
+}
+
+#pbox{
+ top: 5%;
+ left: 0px;
+ height: 700px;
+ position: absolute;
+ font-family: r;
+ font-size: 20px;
+ color: white;
+ padding: 30px;
+ background-color: #00000054;
+ overflow-y: scroll;
+ scroll-behavior: smooth;
+ 
+}
+
+h2{
+ font-weight: inherit;
+}
+
+kalp{
+  text-shadow: 0px 0px 20px #A7A9C1
+}
+
+
+p0t{
+ font-family: ff;
+ opacity: 60%;
+ font-size: 38px;
+}
+
+#p0:hover{
+ opacity: 0%;
+ transition:.8s;
+}
+
+#p3{
+ display: none;
+}
+
+t1{
+ z-index: 4;
+ top: 55%;left: auto;position: absolute;
+ font-family: ff;
+ font-size: 30px;
+ text-align: center;
+}
+
+t2{
+ z-index: 4;
+ top: 68%;left: calc(50% - 120px);position: absolute;
+ font-family: ff;
+ font-size: 75px;
+ text-align: center;
+}
+
+t3{
+ z-index: 4;
+ top: 85%;left: calc(50% - 150px);position: absolute;
+ font-family: ff;
+ font-size: 35px;
+}
+
+t4{
+ z-index: 4;
+ top: 45%;left: 1%;position: absolute;
+ font-family: ff;
+ font-size: 31px;
+ text-align: center;
+}
+
+t5{
+ z-index: 99;
+ top: 54%;left: 48%;position: absolute;
+ font-family: ff;
+ font-size: 35px;
+ text-align: center;
+}
+
+t5:hover {
+ left: 12%;
+ font-size: 250px;
+ opacity: 0%;
+ box-shadow: 2px 2px 5px #7B0000;
+ transition:.5s;
+}
+
+#write{
+ z-index: 4;
+ top: 63%;left : calc(15% - 20px); position: absolute;
+ width: 70%;height: 18%;
+ background-color: #151515C7;
+ color: white;
+ outline: 0;
+ font-family: ff;
+ font-size: 26.5px;
+ border-style: none;
+ padding: 20px;
+ border-radius: 10px;
+}
+
+.bbtn{
+ z-index: 4;
+  background-color: #151515C7;
+  color: white;
+  outline: 0;
+  font-family: ff;
+  font-size: 25px;
+  border-style: none;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+.bbtn:hover{
+ background-color: #000000;
+ color: #1A354D;
+ transition:.5s;
+}
+back{
+ top: 89%;left : calc(15% - 20px); position: absolute;
+  width: 10%;height: 3%;
+
+}
+
+change{
+ top: 89%;left : calc(48.5% - 23% / 2); position: absolute;
+ width: 15%;height: 3%;
+}
+
+send{
+  top: 89%;left : calc(73% - 20px); position: absolute;
+  width: 12%;height: 3%;
+}
+
+alert{
+ z-index: 4;
+ top: 10%;left:22.5%;position:absolute;
+  font-family: ff;
+  font-size: 30px;
+  text-align: center;
+  color: #1A354D;
+  opacity:0%;
+}
+
+#next{
+ z-index: 4;
+ top: 86.5%;left: calc(55%);position: absolute;
+ font-family: ff;
+ font-size: 23px;
+}
+   
+  </style>
+  
+</head>
+
+<body>
+  <!-- Project -->
+  <scr id="screen"></scr>
+  <panel0 id="p0"> <kalp>🖤</kalp><br><br> <p0t> kalbe dokun.. </p0t></panel0>
+  <img id="moon" src="moon.png">
+  
+  <canvas id="canvas"></canvas>
+  
+  <panel1 id="p1">
+   
+   <t1>İyi ki doğdun tüm dünyaların en tatlı kızı...</t1>
+   <t2>Elifim, </t2>
+   <t3>bir tanem.</t3>
+   <btn id="next">devam..</btn>
+   
+  </panel1>
+  
+  <panel3 id="p3">
+   
+   <alert id="alert">mesajın bana ulaştı</alert>
+   
+   <t4>Düşüncelerini benimle paylaşabilirsin bebeğim</t4>
+   <t5 onclick="open_p4()">❤️</t5>
+   <textarea placeholder="Öncelikle kalbe bas askim" id="write" cols="30" rows="10"></textarea>
+   
+   <back class="bbtn" id="back">geri</back>
+   <change class="bbtn" id="change">melodi</change>
+   <send class="bbtn" id="send">gönder</send>
+   
+   
+  </panel3>
+  
+  <panel4 id="p4">
+  
+   <div id="pbox">
+  
+    <h2>Dogum Gunun Kutlu Olsun Dunyanın En Tatlı Kızı...</h2>
+  
+    Simdi Elif kim biliyor musun? O, dunyanın eeeeen tatlıı kızı. Yok iste oyle boyle degil. Canım Elifim seni coo...ok seviyorum. Bugun dunyanın en guzel gunlerinden biri degil, en guzel gunu. Cunku bugun sen dogdun. Sen, her seyin anlam kazandıgı en guzel seysin. Sen olmasaydın ben ne yapardım. Canım bebegim. Askim bir tanem. Elifim. İyiki dogdun Elif. Ben hep yanındayım. Sen dunyanın en guzel kızısın. Diger her seyi bosver. Sen benimsin. Hepsi bu, bana aitsin. O kızı anlatmaya devam etmek istiyorum 🖤
+    <br><br>
+    Ya simdi boyle simsiyah sacları var dunya tatlısı. Ben gozlerinde kayboluyorum. Bu kız oyle guluyor ki bir an dalıp gidiyorsun, kayboluyorsun her seyinle; o an zaman duruyor, bir sey kalmıyor, eriyip bitiyor tum dunyanın akısı. Bir an duraksıyor tum hayat, sadece onun gozlerine bakıyor her sey. O kadar guzel ki... Cok tatlı yanakları var, her seferinde sikayet eder. Ama sikayet ettikce daha da tatlılasır, yemek istersin haha ❤️. Suregen ve olagan evrenin anlamsız derecede cozemedigi impuls. Sayıların bile yazmayacagı alefim. א ∞
+    <br><br>
+  
+    Unutma, kendine cok iyi bak. Seni seviyorum. Bu sene elinden geleni yap. Kendin icin cevreni degistir. Seni hep mutlu edecegim. Sen Elif degilsin. Elifimsin. Canım bebegim. Kendini uzme, her seyi bir kenara bırak. Ben sana deger veriyorum. Ben seni seviyorum. Hicbir beklentim yok. İnan tek beklentim mutlu olman. İstersen beni hayatından cıkar, yeter ki mutlu ol. Artık karsılıksız seviyorum seni. Sadece iyiligini istiyorum, yurekten seviyorum seni. Hic inanmayacagın kadar... Sen biricik askımsın. Elifimsin. Her seyin cok guzel. 🖤 Kimseyle boyle samimiyet kurmadım, kimseyi boyle sevmedim. Bilmem, belki de kalbimiz birbirimize baglıdır. Benim icin bir ay ısıgı kadar parlak ve guzelsin. Benim icin ozel ve degerlisin. Niye bilmiyorum ama sadece seviyorum iste. Hicbir istegim yok senden, niye bilmiyorum ama iste bazen ne yaparsan yap o insan senin icin ozel. Ne yapsın etsin seveceksin iste. Ask falan bile gelip gecici seyler. Mesele yurekten sevmek. Seviyorum iste. Bilmiyorum, ne yapsam etsem de sevecegim ben sana baglıyım. Benim icin ozelsin. İspat yukum falan da yok. Seni seviyorum.
+  
+    <br><br>
+  
+    Dusunsene aynı universiteyi kazandıgımızı cok guzel olurdu. Bilmiyorum ya da belki bunu dusunmek aksine calısmana engel olur veya tam tersi adam akilli calisman icin sebep olur veya oyle calisman icin beni unutman sarttır, her neyse. Sozun ozu sonuc aynı. Hayatım kendini umursamasan bile benim icin elinden geleni en iyisini yap. Ve hatta benim icin onun otesine de gec. Unutma insan imkansızı basarabilir demek yetersizdir cunku insan sahip oldugu potansiyeli ile bunun otesine de ulasabilir. Yeter ki mantıklı bir sekilde ve cok isteyebilesin. Benim icin kendine deger ver. Sen kendini sevmesen bile seni her seyden cok seven insanlar var. Ben buradayım. İhtiyacın oldugunda hep olacagım, varsa kesinlikle cekinme yaz. Biraz uzun oldu degil mi? Neyse. Bugun, benim monoton hayatımın degistigi, amac kazandıgı yerdir. Bugun dunyanın en guzel kızının dogdugu gun. Bugunun guzelligini anlatmak icin sadece Elif kadar diyebilirim. Hayatım. İyi ki dogdun. İyi ki varsın. Sen her seyimsim ❤️🖤
+    <br><br>
+    İstedigin melodiyi melodi tusuna basıp oynatabilirsin askim. Chrome'dan girersen muzik hic durmaz bebegim. Bana istedigini yazabilirsin. Okuyacagım askım 🖤🖤
+    <br><br><br>
+  
+    <btn class="bbtn" id="first">Geri Dön</btn>
+  
+   </div>
+  </panel4>
+  
+  <script type="module">
+   
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  const firebaseConfig = {
+    apiKey: "AIzaSyCRMArdPvjBLRF3KSda-L_cWaKhviv7mzo",
+    authDomain: "myelf-80e3c.firebaseapp.com",
+    projectId: "myelf-80e3c",
+    storageBucket: "myelf-80e3c.appspot.com",
+    messagingSenderId: "102823415806",
+    appId: "1:102823415806:web:33221bd28cd08eb16ffaaf"
+  };
+
+  const app = initializeApp(firebaseConfig);
+      import { getDatabase, ref, set, onChildAdded, push } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
+      const db = getDatabase();
+      
+function l(func) {
+ ctx.beginPath();func();ctx.closePath();
+}
+
+function radian(degree) {
+ return degree * Math.PI / 180;
+}
+
+var rand = (x, y) => {if (y==undefined){return Math.floor(Math.random()*x)}else {
+ 
+ var te = rand(y);
+ if (te>x) {
+  return te;
+ } else return rand(x, y)
+ 
+}}
+
+var line = (p1, p2, w=1, color = 'white') => {
+ l(()=>{
+  ctx.moveTo(p1.x, p1.y);
+  ctx.lineTo(p2.x,p2.y);
+  ctx.lineWidth = w;
+  ctx.stroke();
+  ctx.strokeStyle = color;
+ })
+}
+
+class P
+{
+ constructor(x=0, y=0) {
+  this.x = x;this.y = y;
+ }
+}
+
+var FPS = 60;
+
+var id = (x) => { return document.getElementById(x)};
+
+const canvas = id('canvas');
+const ctx = canvas.getContext('2d');
+
+var W = window.innerWidth;
+var H = window.innerHeight;
+
+canvas.width = W
+canvas.height = H
+
+const moon = id('moon');
+
+const p0 = id('p0');
+const p1 = id('p1');
+const p3 = id('p3');
+const p4 = id('p4');
+const sc = id('screen');
+const next = id('next');
+
+const backB = id('back')
+const sendB = id('send')
+const changeB = id('change')
+
+const first = id('first');
+
+const writeB = id('write');
+const alertB = id('alert');
+
+
+const rain_music = 'https://orangefreesounds.com/wp-content/uploads/2023/10/Thunder-and-rain-pouring-sound-effect.mp3?_=1';
+
+const musics = [
+ 
+ 'https://cdn.pixabay.com/download/audio/2022/01/01/audio_2682810a9a.mp3?filename=music-box-music-by-ernst-gottlieb-baron-1696-1760-6-13237.mp3'
+ 
+ , 'https://cdn.pixabay.com/download/audio/2023/11/12/audio_c7c71f9fab.mp3?filename=mystical-music-box-for-spooky-175971.mp3'
+ 
+ , 'https://cdn.pixabay.com/download/audio/2023/10/19/audio_558c88871f.mp3?filename=what-child-is-this-music-box-172280.mp3'
+ 
+ ]
+
+var music_i = 2;
+
+var sound0 = new Audio(musics[music_i]);
+var sound1 = new Audio(rain_music);
+sound0.loop = true;
+sound1.loop = true;
+
+
+p0.onclick = () => {
+ sound0.play();
+ sound1.play();
+ sc.style = 'opacity: 0%;transition: 1.5s';
+ setTimeout(()=>{
+  p0.style.display = 'none';
+  sc.style.display = 'none';
+ },1500)
+}
+
+next.onclick = () => {
+ p1.style.display = 'none';
+ p3.style.display = 'inline';
+}
+
+backB.onclick = () =>{
+ p1.style.display = 'inline';
+ p3.style.display = 'none';
+}
+
+changeB.onclick = ()=> {
+ music_i+=1;
+ sound0.src = musics[music_i%3];
+ sound0.play();
+}
+
+sendB.onclick = () => {
+ alertB.style = 'opacity: 100%;transition: 0.8s';
+ setTimeout(()=>{
+  alertB.style = 'opacity: 0%;transition: 0.8s';
+ }, 4000)
+ 
+ push(ref(db, 'ElfMessages'), {
+   message: writeB.value
+  })
+  
+  writeB.style = 'color: rgba(255, 255, 255, 0);transition:0.5s';
+  setTimeout(()=>{
+   writeB.value='';
+   writeB.style = 'color:white'
+  }, 500)
+}
+
+first.onclick = () => {
+ setTimeout(() => {
+  p3.style.display = 'inline';
+  p4.style.display = 'none';
+ }, 300)
+}
+
+window.open_p4 = () => {
+ setTimeout(()=>{
+  p3.style.display = 'none';
+  p4.style.display = 'inline';
+ },300)
+}
+
+document.body.querySelector('t2').onclick = () => {
+ moon.style = 'filter: brightness(150%);transition:3.5s;';
+ setTimeout(()=>{
+  moon.style = 'filter: brightness(100%);transition:3.5s;';
+ }, 4000)
+}
+
+ var rN = 100; //rain number
+ var l0 = 400 
+ var l1 = 600;
+ 
+ var standartRainSpeed = 500; //V0
+ var minRainSpeed = 400;
+ var maxRainSpeed = 600;
+ 
+ var standartRainAc = 10; //a
+ var minRainAc = 5;
+ var maxRainAc = 15;
+ 
+ var standartRainAngle = 65; //alpha
+ var minRainAngle = -15;
+ var maxRainAngle = 10;
+ 
+ var standartRainWidth=.5; //w
+ var maxRainWidth =.8;
+ 
+ var standartRainLength = 15; //r
+ var minRainLength = 5
+ var maxRainLength = 30;
+ 
+ class Rain {
+  constructor(p = new P(), r = standartRainLength, alpha = radian(standartRainAngle), w = standartRainWidth, color) {
+   this.p = p;
+   this.r = r;
+   this.alpha = alpha;
+   this.w = w;
+   this.color = color;
+   
+   this.V0 = standartRainSpeed;
+   this.V = new P(this.V0*Math.cos(this.alpha), this.V0*Math.sin(this.alpha));
+   this.a = standartRainAc;
+   
+   setInterval(()=>{
+    this.V.x+=this.a*Math.cos(this.alpha)/FPS;
+    this.V.y+=this.a*Math.sin(this.alpha)/FPS;
+    this.p.x-=this.V.x/FPS;
+    this.p.y+=this.V.y/FPS;
+   }, 1000/FPS)
+   
+  }
+  draw() {
+   if (this.p.x<=W&&this.p.x>=0&&this.p.y>=0&&this.p.y<=H) {
+   line(this.p, new P(this.p.x-this.r*Math.cos(this.alpha), this.p.y+this.r*Math.sin(this.alpha)), this.w,this.color)
+   } else {
+    this.p = new P(rand(W+l1), -rand(l0))
+    this.a = rand(minRainAc, maxRainAc);
+    this.V0 = rand(minRainSpeed, maxRainSpeed);
+    this.V = new P(this.V0*Math.cos(this.alpha), this.V0*Math.sin(this.alpha));
+   }
+  }
+ }
+ 
+ var rain = [];
+ 
+  for (let i = 0; i < rN; i += 1) {
+   
+   var el = new Rain(new P(rand(W+l1), -rand(l0)), rand(minRainLength, maxRainLength), radian(standartRainAngle+rand(minRainAngle,maxRainAngle)), Math.random()*maxRainWidth);
+   rain.push(el)
+  }
+ 
+ 
+var clear = () => {
+  ctx.clearRect(0,0,W,H);
+}
+var  calc = () => {
+  
+ }
+ 
+var draw = () => {
+  
+  
+  for(let i = 0;i<rain.length;i+=1) {
+   rain[i].draw();
+  }
+  
+ }
+ 
+var main = () => {
+  clear();
+  calc();
+  draw();
+ }
+ 
+ var loop = setInterval(main, 1000/FPS)
+   
+  </script>
+</body>
+</html>
