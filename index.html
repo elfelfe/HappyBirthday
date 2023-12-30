@@ -256,6 +256,13 @@ alert{
   <panel4 id="p4">
   
    <div id="pbox">
+
+<h2> Mutlu yıllar Bebegim... </h2>
+
+ Bu yıl guzel gunler yasamak dilegiyle, yeni yılın kutlu olsun 🖤
+<br>
+Belki kar yagmadı ama senin icin ben burada yagdirdim askim 
+<br><br>
   
     <h2>Dogum Gunun Kutlu Olsun Dunyanın En Tatlı Kızı...</h2>
   
@@ -442,19 +449,20 @@ window.open_p4 = () => {
 }
 
 document.body.querySelector('t2').onclick = () => {
- moon.style = 'filter: brightness(150%);transition:3.5s;';
+ 
+ moon.style = 'filter: brightness(150%) hue-rotate(60deg) contrast(150%);transition:3.5s;';
  setTimeout(()=>{
   moon.style = 'filter: brightness(100%);transition:3.5s;';
  }, 4000)
 }
 
- var rN = 100; //rain number
+ var rN = 300; //rain number
  var l0 = 400 
  var l1 = 600;
  
- var standartRainSpeed = 500; //V0
- var minRainSpeed = 400;
- var maxRainSpeed = 600;
+ var standartRainSpeed = 200; //V0
+ var minRainSpeed = 100;
+ var maxRainSpeed = 300; 
  
  var standartRainAc = 10; //a
  var minRainAc = 5;
@@ -465,11 +473,11 @@ document.body.querySelector('t2').onclick = () => {
  var maxRainAngle = 10;
  
  var standartRainWidth=.5; //w
- var maxRainWidth =.8;
+ var maxRainWidth =1;
  
- var standartRainLength = 15; //r
- var minRainLength = 5
- var maxRainLength = 30;
+ var standartRainLength = 4.2; //r
+ var minRainLength = 1
+ var maxRainLength = 5.8
  
  class Rain {
   constructor(p = new P(), r = standartRainLength, alpha = radian(standartRainAngle), w = standartRainWidth, color) {
